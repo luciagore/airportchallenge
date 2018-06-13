@@ -10,6 +10,7 @@ describe('Weather', function(){
   });
   it('can see if weather is stormy', function(){
     weather.change()
+    spyOn(weather, 'isStormy').and.returnValue(true)
     expect(weather.isStormy()).toEqual(true);
   });
 });

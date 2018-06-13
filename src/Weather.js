@@ -9,5 +9,5 @@ Weather.prototype.isStormy = function () {
 };
 
 Weather.prototype.change = function () {
-  this._weather = true
+  if(Math.floor(Math.random()*10) >7) {this._weather = true}
 };
