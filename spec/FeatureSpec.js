@@ -17,10 +17,12 @@
 describe('Feature Test', function() {
   var plane;
   var airport;
+  var weather;
 
   beforeEach(function() {
     plane = new Plane()
-    airport = new Airport()
+    airport = new Airport(weather)
+    weather = new Weather()
   });
 
   it('planes can be instructed to land at an airport', function() {
@@ -34,7 +36,7 @@ describe('Feature Test', function() {
     expect(airport.planes()).not.toContain(plane);
   });
 
-  it('blocks takeoff when weather is stormy', function(){
+  it('blocks takeoff and landing when weather is stormy', function(){
     plane.land(airport)
     spyOn(airport,'isStormy').and.returnValue(true);
     expect(function(){ plane.takeoff();}).toThrowError('cannot takeoff during storm');
